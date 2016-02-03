@@ -18,12 +18,12 @@
         padding-top: 70px;
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
-    .list {
+.list {
   font-family:sans-serif;
   margin:0;
   padding:20px 0 0;
 }
-.list > li {
+.list > .link {
   display:block;
   background-color: #eee;
   padding:10px;
@@ -39,9 +39,7 @@ h3 {
 p {
   margin:0;
 }
-.search{
-  margin-top:25px;
-}
+
     </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -100,24 +98,23 @@ p {
                     </div><!-- /input-group -->
 
                 
-                  <ul class="list">
-                    <li>
-                      <h3 class="name">Jonny Stromberg</h3>
-                      <p class="born">1986</p>
-                    </li>
-                    <li>
+                  <div class="list">
+                    <button class="link">
+                      <h3 class="name">Search Google</h3>
+                    </button>
+                    <button class="link">
                       <h3 class="name">Jonas Arnklint</h3>
                       <p class="born">1985</p>
-                    </li>
-                    <li>
+                    </button>
+                    <button class="link">
                       <h3 class="name">Martina Elm</h3>
                       <p class="born">1986</p>
-                    </li>
-                    <li>
+                    </button>
+                    <button class="link">
                       <h3 class="name">Gustaf Lindqvist</h3>
                       <p class="born">1983</p>
-                    </li>
-                  </ul>
+                    </button>
+                  </div>
             </div>
         </div>
         <!-- /.row -->
