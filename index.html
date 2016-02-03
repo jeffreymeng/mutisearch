@@ -1,0 +1,67 @@
+<div class="container">
+<div id="users" class="col-lg-12">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  
+
+  <ul class="list">
+    <li>
+      <h3 class="name">Jonny Stromberg</h3>
+      <p class="born">1986</p>
+    </li>
+    <li>
+      <h3 class="name">Jonas Arnklint</h3>
+      <p class="born">1985</p>
+    </li>
+    <li>
+      <h3 class="name">Martina Elm</h3>
+      <p class="born">1986</p>
+    </li>
+    <li>
+      <h3 class="name">Gustaf Lindqvist</h3>
+      <p class="born">1983</p>
+    </li>
+  </ul>
+
+</div>
+</div>
+<script>
+function phraseQuery(search) {
+    var before =  search.split("[search")[0];
+    var after = search.split("[search]")[1];
+    return {function:function(search){window.location.href=this.before + search + this.after}, before:before, after:after };
+};
+/*
+var engine = [
+{name:"google", searches:27},
+{name:"bing", searches:14}
+]
+*/
+function getPopularity(name) {
+    if (name === null) {
+        return localStorage.getItem("engines"); // [{name:"google", "search=https://google.combhal"}]
+    } else {
+        return localStorage.getItem("engines")[name]; // {name:"google", search:"https://www.google.com/search?aqs=chrome..69i57j69i60l4j0.958j0j4&sourceid=chrome&es_sm=91&ie=UTF-8#q=[search]"}
+    }
+};
+function getSearchEngines(name) {
+    
+}
+function findPopularity(engine) {
+    var highScoreSoFar = 0;
+    var result;
+    for (var i = 0; i < engine.length; i++) {
+        if (engine[i].searches > highScoreSoFar) {
+            result = engine[i].name;
+            highScoreSoFar = engine[i].searches;
+        }
+    }
+    return result;
+}
+</script>
