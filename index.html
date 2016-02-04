@@ -94,12 +94,12 @@ p {
                     <div class="input-group">
                       <input type="text" class="form-control" placeholder="Search for...">
                       <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go!</button>
+                        <button class="btn btn-default" type="button">Search <span id="common"></span>!</button>
                       </span>
                     </div><!-- /input-group -->
 
                 
-                  <ul class="list">
+                  <ul class="list ">
                     <li>
                       <button class="name btn btn-primary form-control">Search Google</h3>
                     </li>
@@ -151,7 +151,7 @@ function getPopularity(name) {
     }
 };
 function getSearchEngines(name) {
-    
+    var x = localStorage.getItem(name)
 }
 function findPopularity(engine) {
     var highScoreSoFar = 0;
