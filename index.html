@@ -156,43 +156,36 @@ p {
       }
     });
 
-    function getSearchVal(){ return encodeURIComponent(document.getElementById("search").value.replaceAll(" ", "+") ) }
     function defineDefualt() {
         
         localStorage.setItem("engines", JSON.stringify({
             google:{
-                redirSearch:function(){
-                    window.location.href = "https://www.google.com/?gws_rd=ssl#q=" + getSearchVal();
-                },
+                first:"https://www.google.com/?gws_rd=ssl#q=",
+                last:"",
+
                 searchString:"https://www.google.com/?gws_rd=ssl#q=[search]"
             }, 
             bing:{
-                redirSearch:function(){
-                    window.location.href = "https://www.bing.com/search?q=" + getSearchVal() + "&qs=n&form=QBRE&pq=sss&sc=8-3&sp=-1&sk=&cvid=F3CD4F0EF581451A912B9AB8E4DBDF75" + getSearchVal();
-                },
+                first:"https://www.bing.com/search?q=",
+                last:"&qs=n&form=QBRE&pq=sss&sc=8-3&sp=-1&sk=&cvid=F3CD4F0EF581451A912B9AB8E4DBDF75",
                 searchString:"https://www.bing.com/search?q=[search]&qs=n&form=QBRE&pq=sss&sc=8-3&sp=-1&sk=&cvid=F3CD4F0EF581451A912B9AB8E4DBDF75"
             }, 
             wikipedia:{
-                redirSearch:function(){
-                   window.location.href = "https://en.wikipedia.org/w/index.php?search=" + getSearchVal() + "&title=Special%3ASearch&go=Go";
-                },
+                first:"https://en.wikipedia.org/w/index.php?search=",
+                last:"&title=Special%3ASearch&go=Go",
                 searchString:"https://en.wikipedia.org/w/index.php?search=[search]&title=Special%3ASearch&go=Go"
             },
             yahoo:{
-                redirSearch:function(){
-                   window.location.href = "https://en.wikipedia.org/w/index.php?search=" + getSearchVal() + "&title=Special%3ASearch&go=Go";
-                },
+                first:"https://en.wikipedia.org/w/index.php?search=",
+                last:"&title=Special%3ASearch&go=Go",
                 searchString:"https://search.yahoo.com/search?p=[search]&fr=yfp-t-201"
             }
         }));
     }
     defineDefualt()
     function run(engine) {
-        var e = getEngine(engine); 
-        e.redirSearch();
-    }
-    function getEngine(engine) {
-        return JSON.parse(localStorage.getItem("engines")[engine] );
+        var e = JSON.parse(localStorage.getItem("engines")[engine] );
+        window.location.href = e.first + decodeURIComponent($("#search").val().replaceAll(" ", "+")) + e.last;
     }
 </script>
 
