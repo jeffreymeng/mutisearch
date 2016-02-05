@@ -159,7 +159,7 @@ p {
     function getSearchVal(){ return encodeURIComponent(document.getElementById("search").value.replaceAll(" ", "+") ) }
     function defineDefualt() {
         
-        localStorage.setItem("engines", {
+        localStorage.setItem("engines", JSON.stringify({
             google:{
                 redirSearch:function(){
                     window.location.href = "https://www.google.com/?gws_rd=ssl#q=" + getSearchVal();
@@ -184,7 +184,7 @@ p {
                 },
                 searchString:"https://search.yahoo.com/search?p=[search]&fr=yfp-t-201"
             }
-        });
+        }));
     }
     defineDefualt()
     function run(engine) {
@@ -192,7 +192,7 @@ p {
         e.redirSearch();
     }
     function getEngine(engine) {
-        return localStorage.getItem("engines")[engine];
+        return JSON.parse(localStorage.getItem("engines")[engine] );
     }
 </script>
 
